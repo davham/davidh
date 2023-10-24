@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const pageTitle = ' About Me';
 const identity = {
 	firstName: 'David',
@@ -7,6 +8,8 @@ const identity = {
 	hobbies: ['Photography', 'Cooking', 'Soccer'], 
 };
 const skills = ['HTML', 'CSS', 'Javascript', 'Writing Stuff'];
+const skillColor = "red";
+const textCase = 'uppercase';
 ---
 
 <html lang="en">
@@ -16,6 +19,18 @@ const skills = ['HTML', 'CSS', 'Javascript', 'Writing Stuff'];
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{skillColor, textCase}}>
+			h1 {
+				color: blue;
+				font-size: 4rem;
+			}
+			.skill {
+				color: var(--skillColor);
+				font-weight: bold;
+				list-style: none;
+				text-transform: var(--textCase);
+			}
+		</style>
 	</head>
 	<body>
         <a href="/">Home</a>
@@ -35,7 +50,7 @@ const skills = ['HTML', 'CSS', 'Javascript', 'Writing Stuff'];
 	</ul>
 	<p>My skills are</p>
 	<ul>
-		{skills.map((skill) => <li>{skill}</li>)}
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
 	</ul>
 	</body>
 </html>
